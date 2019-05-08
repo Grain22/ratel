@@ -1,28 +1,25 @@
 package org.nico.ratel.landlords.enums;
 
-public enum RoomStatus{
+public enum RoomStatus {
 
-	BLANK("空闲"),
-	
-	WAIT("等待"),
-	
-	STARTING("开始"),
-	
-	
-	;
-	
-	private String msg;
+    BLANK("空闲"),
 
-	private RoomStatus(String msg) {
-		this.msg = msg;
-	}
+    WAIT("等待"),
 
-	public final String getMsg() {
-		return msg;
-	}
+    STARTING("开始"),;
 
-	public final void setMsg(String msg) {
-		this.msg = msg;
-	}
-	
+    private String msg;
+
+    private RoomStatus(String msg) {
+        this.msg = msg;
+    }
+
+    public final String getMsg() {
+        return msg;
+    }
+
+    public final void setMsg(String msg) {
+        this.msg = msg;
+    }
+
 }

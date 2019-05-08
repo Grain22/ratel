@@ -1,152 +1,152 @@
 package org.nico.ratel.landlords.entity;
 
-import java.util.List;
-
+import io.netty.channel.Channel;
 import org.nico.ratel.landlords.enums.ClientRole;
 import org.nico.ratel.landlords.enums.ClientStatus;
 import org.nico.ratel.landlords.enums.ClientType;
 
-import io.netty.channel.Channel;
+import java.util.List;
 
-public class ClientSide{
+public class ClientSide {
 
-	private int id;
-	
-	private int roomId;
-	
-	private String nickname;
-	
-	private List<Poker> pokers;
-	
-	private ClientStatus status;
-	
-	private ClientRole role;
-	
-	private ClientType type;
-	
-	private ClientSide next;
-	
-	private ClientSide pre;
-	
-	private transient Channel channel;
-	
-	public ClientSide() {}
+    private int id;
 
-	public ClientSide(int id, ClientStatus status, Channel channel) {
-		this.id = id;
-		this.status = status;
-		this.channel = channel;
-	}
-	
-	public void init() {
-		roomId = 0;
-		pokers = null;
-		status = ClientStatus.TO_CHOOSE;
-		type = null;
-		next = null;
-		pre = null;
-	}
+    private int roomId;
 
-	public final ClientRole getRole() {
-		return role;
-	}
+    private String nickname;
 
-	public final void setRole(ClientRole role) {
-		this.role = role;
-	}
+    private List<Poker> pokers;
 
-	public final String getNickname() {
-		return nickname;
-	}
+    private ClientStatus status;
 
-	public final void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+    private ClientRole role;
 
-	public final Channel getChannel() {
-		return channel;
-	}
+    private ClientType type;
 
-	public final void setChannel(Channel channel) {
-		this.channel = channel;
-	}
+    private ClientSide next;
 
-	public final int getRoomId() {
-		return roomId;
-	}
+    private ClientSide pre;
 
-	public final void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
+    private transient Channel channel;
 
-	public final List<Poker> getPokers() {
-		return pokers;
-	}
+    public ClientSide() {
+    }
 
-	public final void setPokers(List<Poker> pokers) {
-		this.pokers = pokers;
-	}
+    public ClientSide(int id, ClientStatus status, Channel channel) {
+        this.id = id;
+        this.status = status;
+        this.channel = channel;
+    }
 
-	public final ClientStatus getStatus() {
-		return status;
-	}
+    public void init() {
+        roomId = 0;
+        pokers = null;
+        status = ClientStatus.TO_CHOOSE;
+        type = null;
+        next = null;
+        pre = null;
+    }
 
-	public final void setStatus(ClientStatus status) {
-		this.status = status;
-	}
+    public final ClientRole getRole() {
+        return role;
+    }
 
-	public final ClientType getType() {
-		return type;
-	}
+    public final void setRole(ClientRole role) {
+        this.role = role;
+    }
 
-	public final void setType(ClientType type) {
-		this.type = type;
-	}
+    public final String getNickname() {
+        return nickname;
+    }
 
-	public final int getId() {
-		return id;
-	}
+    public final void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
-	public final void setId(int id) {
-		this.id = id;
-	}
+    public final Channel getChannel() {
+        return channel;
+    }
 
-	public final ClientSide getNext() {
-		return next;
-	}
+    public final void setChannel(Channel channel) {
+        this.channel = channel;
+    }
 
-	public final void setNext(ClientSide next) {
-		this.next = next;
-	}
+    public final int getRoomId() {
+        return roomId;
+    }
 
-	public final ClientSide getPre() {
-		return pre;
-	}
+    public final void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
 
-	public final void setPre(ClientSide pre) {
-		this.pre = pre;
-	}
+    public final List<Poker> getPokers() {
+        return pokers;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
-	}
+    public final void setPokers(List<Poker> pokers) {
+        this.pokers = pokers;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ClientSide other = (ClientSide) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
+    public final ClientStatus getStatus() {
+        return status;
+    }
+
+    public final void setStatus(ClientStatus status) {
+        this.status = status;
+    }
+
+    public final ClientType getType() {
+        return type;
+    }
+
+    public final void setType(ClientType type) {
+        this.type = type;
+    }
+
+    public final int getId() {
+        return id;
+    }
+
+    public final void setId(int id) {
+        this.id = id;
+    }
+
+    public final ClientSide getNext() {
+        return next;
+    }
+
+    public final void setNext(ClientSide next) {
+        this.next = next;
+    }
+
+    public final ClientSide getPre() {
+        return pre;
+    }
+
+    public final void setPre(ClientSide pre) {
+        this.pre = pre;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ClientSide other = (ClientSide) obj;
+        if (id != other.id)
+            return false;
+        return true;
+    }
 
 }

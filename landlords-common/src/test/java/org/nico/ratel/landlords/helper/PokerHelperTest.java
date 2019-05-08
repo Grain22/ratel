@@ -43,15 +43,15 @@ public class PokerHelperTest {
     public void testGetIndexes() {
         Assert.assertNull(PokerHelper.getIndexes(new Character[]{'3', '4', '5', '6', '7', '8'}, pokers));
         Assert.assertNotNull(PokerHelper.getIndexes(new Character[]{}, new ArrayList<>()));
-        Assert.assertEquals(0,PokerHelper.getIndexes(new Character[]{}, new ArrayList<>()).length);
+        Assert.assertEquals(0, PokerHelper.getIndexes(new Character[]{}, new ArrayList<>()).length);
     }
 
     @Test
     public void testGetPoker() {
-        Assert.assertEquals(PokerLevel.LEVEL_3,PokerHelper.getPoker(new int[]{1, 2}, pokers).get(0).getLevel());
-        Assert.assertEquals(PokerType.BLANK,PokerHelper.getPoker(new int[]{1, 2}, pokers).get(0).getType());
-        Assert.assertEquals(PokerLevel.LEVEL_4,PokerHelper.getPoker(new int[]{1, 2}, pokers).get(1).getLevel());
-        Assert.assertEquals(PokerType.DIAMOND,PokerHelper.getPoker(new int[]{1, 2}, pokers).get(1).getType());
+        Assert.assertEquals(PokerLevel.LEVEL_3, PokerHelper.getPoker(new int[]{1, 2}, pokers).get(0).getLevel());
+        Assert.assertEquals(PokerType.BLANK, PokerHelper.getPoker(new int[]{1, 2}, pokers).get(0).getType());
+        Assert.assertEquals(PokerLevel.LEVEL_4, PokerHelper.getPoker(new int[]{1, 2}, pokers).get(1).getLevel());
+        Assert.assertEquals(PokerType.DIAMOND, PokerHelper.getPoker(new int[]{1, 2}, pokers).get(1).getType());
     }
 
     @Test
@@ -68,62 +68,62 @@ public class PokerHelperTest {
     public void testCheckPokerType1() {
         pokers.clear();
         Assert.assertNull(PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(-1,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.ILLEGAL,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(-1, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.ILLEGAL, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_SMALL_KING, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_BIG_KING, PokerType.DIAMOND));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(2147483647,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.KING_BOMB,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(2147483647, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.KING_BOMB, PokerHelper.checkPokerType(pokers).getSellType());
     }
 
     @Test
     public void testCheckPokerType2() {
         pokers.clear();
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(7,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.SINGLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(7, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.SINGLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(7,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.DOUBLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(7, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.DOUBLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(7,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.THREE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(7, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.THREE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(1027,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.BOMB,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(1027, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.BOMB, PokerHelper.checkPokerType(pokers).getSellType());
 
-        pokers.remove(pokers.size()-1);
+        pokers.remove(pokers.size() - 1);
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(7,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.THREE_ZONES_SINGLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(7, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.THREE_ZONES_SINGLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(7,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.THREE_ZONES_DOUBLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(7, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.THREE_ZONES_DOUBLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(8,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.THREE_STRAIGHT_WITH_SINGLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(8, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.THREE_STRAIGHT_WITH_SINGLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(8,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.FOUR_STRAIGHT_WITH_DOUBLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(8, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.FOUR_STRAIGHT_WITH_DOUBLE, PokerHelper.checkPokerType(pokers).getSellType());
     }
 
     @Test
@@ -134,36 +134,36 @@ public class PokerHelperTest {
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(10,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.SINGLE_STRAIGHT,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(10, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.SINGLE_STRAIGHT, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_6, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(10,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.DOUBLE_STRAIGHT,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(10, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.DOUBLE_STRAIGHT, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_6, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(10,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.THREE_STRAIGHT,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(10, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.THREE_STRAIGHT, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_6, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(10,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.FOUR_STRAIGHT,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(10, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.FOUR_STRAIGHT, PokerHelper.checkPokerType(pokers).getSellType());
     }
 
     @Test
@@ -175,9 +175,9 @@ public class PokerHelperTest {
         pokers.add(new Poker(PokerLevel.LEVEL_8, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(8,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.FOUR_ZONES_SINGLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(8, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.FOUR_ZONES_SINGLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_5, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_6, PokerType.HEART));
@@ -185,9 +185,9 @@ public class PokerHelperTest {
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(8,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.FOUR_STRAIGHT_WITH_SINGLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(8, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.FOUR_STRAIGHT_WITH_SINGLE, PokerHelper.checkPokerType(pokers).getSellType());
     }
 
     @Test
@@ -201,9 +201,9 @@ public class PokerHelperTest {
         pokers.add(new Poker(PokerLevel.LEVEL_9, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
         pokers.add(new Poker(PokerLevel.LEVEL_10, PokerType.BLANK));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(8,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.FOUR_ZONES_DOUBLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(8, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.FOUR_ZONES_DOUBLE, PokerHelper.checkPokerType(pokers).getSellType());
 
         pokers.add(new Poker(PokerLevel.LEVEL_5, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_5, PokerType.HEART));
@@ -213,8 +213,8 @@ public class PokerHelperTest {
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
         pokers.add(new Poker(PokerLevel.LEVEL_7, PokerType.HEART));
-        Assert.assertEquals(pokers,PokerHelper.checkPokerType(pokers).getSellPokers());
-        Assert.assertEquals(8,PokerHelper.checkPokerType(pokers).getScore());
-        Assert.assertEquals(SellType.FOUR_STRAIGHT_WITH_DOUBLE,PokerHelper.checkPokerType(pokers).getSellType());
+        Assert.assertEquals(pokers, PokerHelper.checkPokerType(pokers).getSellPokers());
+        Assert.assertEquals(8, PokerHelper.checkPokerType(pokers).getScore());
+        Assert.assertEquals(SellType.FOUR_STRAIGHT_WITH_DOUBLE, PokerHelper.checkPokerType(pokers).getSellType());
     }
 }
